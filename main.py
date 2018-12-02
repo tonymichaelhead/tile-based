@@ -2,6 +2,7 @@
 
 import pygame as pg
 import random
+from sprites import *
 from settings import *
 
 class Game:
@@ -17,6 +18,7 @@ class Game:
     def new(self):
         # Start a new game
         self.all_sprites = pg.sprite.Group()
+        self.player = Player(self, 10 ,10)
         self.run()
 
     def run(self):
@@ -40,10 +42,26 @@ class Game:
                 if self.playing:
                     self.playing = False
                 self.running = False
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_LEFT:
+                    self.player.move(dx=-1)
+                if event.key == pg.K_RIGHT:
+                    self.player.move(dx=1)
+                if event.key == pg.K_UP:
+                    self.player.move(dy=-1)
+                if event.key == pg.K_DOWN:
+                    self.player.move(dy=1)
+
+    def draw_grid(self):
+        for x in range(0, WIDTH, TILESIZE):
+            pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, HEIGHT))
+        for y in range(0, WIDTH, TILESIZE):
+            pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
 
     def draw(self):
         # Game loop - draw
-        self.screen.fill(BLACK)
+        self.screen.fill(BGCOLOR)
+        self.draw_grid()
         self.all_sprites.draw(self.screen)
         # *after* drawing everything, flip the display
         pg.display.flip()
