@@ -1,9 +1,10 @@
 # Pygame/Python Template
 
 import pygame as pg
+import sys
 import random
-from sprites import *
 from settings import *
+from sprites import *
 
 class Game:
     def __init__(self):
@@ -13,44 +14,36 @@ class Game:
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
-        self.running = True
+        pg.key.set_repeat(500, 100)
+        self.load_data()
+
+    def load_data(self):
+        pass
 
     def new(self):
         # Start a new game
         self.all_sprites = pg.sprite.Group()
+        self.walls = pg.sprite.Group()
         self.player = Player(self, 10 ,10)
-        self.run()
+        for x in range(10, 20):
+            Wall(self, x, 5)
 
     def run(self):
         # Game loop
         self.playing = True
         while self.playing:
-            self.clock.tick(FPS)
+            self.dt = self.clock.tick(FPS) / 1000
             self.events()
             self.update()
             self.draw()
+    
+    def quit(self):
+        pg.quit()
+        sys.exit()
 
     def update(self):
         # Game loop - update
             self.all_sprites.update()
-
-    def events(self):
-        # Game loop - events
-        for event in pg.event.get():
-            # check for closing window
-            if event.type == pg.QUIT:
-                if self.playing:
-                    self.playing = False
-                self.running = False
-            if event.type == pg.KEYDOWN:
-                if event.key == pg.K_LEFT:
-                    self.player.move(dx=-1)
-                if event.key == pg.K_RIGHT:
-                    self.player.move(dx=1)
-                if event.key == pg.K_UP:
-                    self.player.move(dy=-1)
-                if event.key == pg.K_DOWN:
-                    self.player.move(dy=1)
 
     def draw_grid(self):
         for x in range(0, WIDTH, TILESIZE):
@@ -66,6 +59,24 @@ class Game:
         # *after* drawing everything, flip the display
         pg.display.flip()
 
+    def events(self):
+        # Game loop - events
+        for event in pg.event.get():
+            # check for closing window
+            if event.type == pg.QUIT:
+                self.quit()
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_LEFT:
+                    self.player.move(dx=-1)
+                if event.key == pg.K_RIGHT:
+                    self.player.move(dx=1)
+                if event.key == pg.K_UP:
+                    self.player.move(dy=-1)
+                if event.key == pg.K_DOWN:
+                    self.player.move(dy=1)
+
+
+
     def show_start_screen(self):
         # Game splash/start screen
         pass
@@ -77,8 +88,7 @@ class Game:
     
 g = Game()
 g.show_start_screen()
-while g.running:
+while True:
     g.new()
+    g.run()
     g.show_go_screen()
-
-pg.quit()
