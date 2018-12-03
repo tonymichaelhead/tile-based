@@ -9,22 +9,36 @@ RED = (255, 0,0)
 GREEN = (0, 255,0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
+BROWN = (106, 55, 5)
 
 # Game options/settings
 WIDTH = 1024 # 16 * 64 or 32 * 32 or 64 * 16
 HEIGHT = 768 # 16 * 48 or 32 * 24 or 64 * 12
 FPS = 60
 TITLE = "Tilemap demo"
-BGCOLOR = DARKGREY
+BGCOLOR = BROWN
 
 TILESIZE = 64
 GRIDWIDTH = WIDTH / TILESIZE
 GRIDHEIGHT = HEIGHT / TILESIZE
+
+WALL_IMG = 'tile_354.png'
 
 # Player settings
 PLAYER_SPEED = 300
 PLAYER_ROT_SPEED = 250
 PLAYER_IMG = 'manBlue_gun.png'
 PLAYER_HIT_RECT = pg.Rect(0, 0, 35, 35)
+
+# Gun settings
+BULLET_IMG = 'bullet.png'
+BULLET_SPEED = 500
+BULLET_LIFETIME = 1000
+BULLET_RATE = 150
+
+# Mob settings
+MOB_IMG = 'zoimbie1_hold.png'
+MOB_SPEED = 150 
+MOB_HIT_RECT = pg.Rect(0, 0, 30, 30)
 
 
