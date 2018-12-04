@@ -52,4 +52,8 @@ MOB_DAMAGE = 10
 MOB_KNOCKBACK = 20
 AVOID_RADIUS = 50
 
+# Effects
+MUZZLE_FLASHES = ['smoke_05.png', 'smoke_06.png', 'smoke_07.png', 'smoke_08.png']
+FLASH_DURATION = 40
+
 
