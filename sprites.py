@@ -41,7 +41,7 @@ class  Player(pg.sprite.Sprite):
         self.rot = 0
         self.last_shot = 0
         self.health = PLAYER_HEALTH
-        self.weapon = 'shotgun'
+        self.weapon = 'pistol'
 
     def get_keys(self):
         self.rot_speed = 0
@@ -170,7 +170,7 @@ class Bullet(pg.sprite.Sprite):
         self.pos = vec(pos)
         self.rect.center = pos
         # spread = uniform(-GUN_SPREAD, GUN_SPREAD)
-        self.vel = dir * WEAPONS[game.player.weapon]['bullet_speed']
+        self.vel = dir * WEAPONS[game.player.weapon]['bullet_speed'] * uniform(0.9, 1.1)
         self.spawn_time = pg.time.get_ticks()
 
     def update(self):
