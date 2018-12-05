@@ -56,4 +56,12 @@ AVOID_RADIUS = 50
 MUZZLE_FLASHES = ['smoke_05.png', 'smoke_06.png', 'smoke_07.png', 'smoke_08.png']
 FLASH_DURATION = 40
 
+# Layers
+WALL_LAYER = 1
+PLAYER_LAYER = 2
+BULLET_LAYER = 3
+MOB_LAYER = 2
+EFFECTS_LAYER = 4
+
+
 
