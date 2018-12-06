@@ -69,6 +69,9 @@ MUZZLE_FLASHES = ['smoke_05.png', 'smoke_06.png', 'smoke_07.png', 'smoke_08.png'
 SPLAT = 'splat red.png'
 FLASH_DURATION = 40
 DAMAGE_ALPHA = [i for i in range(0, 255, 55)]
+NIGHT_COLOR = (20, 20, 20)
+LIGHT_RADIUS = (1000, 1000)
+LIGHT_MASK = "light_350_med.png"
 
 # Layers
 WALL_LAYER = 1
