@@ -68,6 +68,7 @@ DETECT_RADIUS = 400
 MUZZLE_FLASHES = ['smoke_05.png', 'smoke_06.png', 'smoke_07.png', 'smoke_08.png']
 SPLAT = 'splat red.png'
 FLASH_DURATION = 40
+DAMAGE_ALPHA = [i for i in range(0, 255, 55)]
 
 # Layers
 WALL_LAYER = 1
